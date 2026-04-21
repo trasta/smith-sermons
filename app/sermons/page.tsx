@@ -1,0 +1,43 @@
+import { supabase } from "@/lib/supabase";
+import SermonCard from "@/components/SermonCard";
+import type { SermonSummary } from "@/lib/types";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = { title: "All Sermons" };
+
+async function getSermons(): Promise<SermonSummary[]> {
+  const { data } = await supabase
+    .from("sermons")
+    .select(`
+      id, sermon_id, title, date, service_type, speaker,
+      series_name, series_chapter, audio_url, duration_seconds,
+      scripture_references ( id, sermon_id, book, chapter, verse_start, verse_end, reference_text ),
+      sermon_tags ( id, sermon_id, tag_type, tag_value )
+    `)
+    .eq("is_private", false)
+    .eq("is_published", true)
+    .order("date", { ascending: false, nullsFirst: false });
+
+  return (data as SermonSummary[]) ?? [];
+}
+
+export default async function SermonsPage() {
+  const sermons = await getSermons();
+
+  return (
+    <div className="max-w-6xl mx-auto px-4 py-12">
+      <h1 className="font-serif text-3xl font-bold text-stone-800 mb-2">All Sermons</h1>
+      <p className="text-stone-500 mb-8">{sermons.length} sermons available</p>
+
+      {sermons.length === 0 ? (
+        <p className="text-stone-400 text-center py-20">No sermons published yet.</p>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {sermons.map((sermon) => (
+            <SermonCard key={sermon.id} sermon={sermon} />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
