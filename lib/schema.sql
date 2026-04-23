@@ -81,7 +81,7 @@ CREATE POLICY "Scripture refs follow sermon visibility"
   USING (
     EXISTS (
       SELECT 1 FROM sermons s
-      WHERE s.id = sermon_id AND s.is_private = FALSE AND s.is_published = TRUE
+      WHERE s.id = scripture_references.sermon_id AND s.is_private = FALSE AND s.is_published = TRUE
     )
   );
 
@@ -90,7 +90,7 @@ CREATE POLICY "Tags follow sermon visibility"
   USING (
     EXISTS (
       SELECT 1 FROM sermons s
-      WHERE s.id = sermon_id AND s.is_private = FALSE AND s.is_published = TRUE
+      WHERE s.id = sermon_tags.sermon_id AND s.is_private = FALSE AND s.is_published = TRUE
     )
   );
 
