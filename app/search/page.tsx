@@ -29,9 +29,10 @@ async function searchSermons(query: string): Promise<SermonSummary[]> {
 export default async function SearchPage({
   searchParams,
 }: {
-  searchParams: { q?: string };
+  searchParams: Promise<{ q?: string }>;
 }) {
-  const query = searchParams.q ?? "";
+  const params = await searchParams;
+  const query = params.q ?? "";
   const results = await searchSermons(query);
 
   return (
