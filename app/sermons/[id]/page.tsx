@@ -22,9 +22,10 @@ async function getSermon(sermonId: string): Promise<Sermon | null> {
 export async function generateMetadata({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }): Promise<Metadata> {
-  const sermon = await getSermon(params.id);
+  const { id } = await params;
+  const sermon = await getSermon(id);
   if (!sermon) return { title: "Sermon not found" };
   return {
     title: sermon.title ?? `Sermon ${sermon.sermon_id}`,
@@ -42,9 +43,10 @@ function formatDate(dateStr: string | null) {
 export default async function SermonPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const sermon = await getSermon(params.id);
+  const { id } = await params;
+  const sermon = await getSermon(id);
   if (!sermon) notFound();
 
   const scriptures = sermon.scripture_references ?? [];
