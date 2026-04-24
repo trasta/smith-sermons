@@ -1,5 +1,6 @@
 import { supabase } from "@/lib/supabase";
 import AudioPlayer from "@/components/AudioPlayer";
+import Link from "next/link";
 import type { Sermon } from "@/lib/types";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -57,7 +58,15 @@ export default async function SermonPage({
     <div className="max-w-3xl mx-auto px-4 py-12">
       {/* Header */}
       <div className="mb-8">
-        <span className="text-xs font-mono text-stone-400">{sermon.sermon_id}</span>
+        <div className="flex items-center justify-between mb-1">
+          <span className="text-xs font-mono text-stone-400">{sermon.sermon_id}</span>
+          <Link
+            href={`/admin/sermons/${sermon.sermon_id}`}
+            className="text-xs text-stone-400 hover:text-blue-600 border border-stone-200 rounded px-2 py-1 hover:border-blue-300 transition-colors"
+          >
+            ✎ Edit
+          </Link>
+        </div>
         <h1 className="font-serif text-3xl font-bold text-stone-900 mt-1 mb-2 leading-tight">
           {sermon.title ?? (sermon.series_name
             ? `${sermon.series_name} — Chapter ${sermon.series_chapter}`
