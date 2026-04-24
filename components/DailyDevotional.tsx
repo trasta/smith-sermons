@@ -38,10 +38,12 @@ function extractItems(xml: string): BlogPost[] {
 
     if (!titleMatch || !linkMatch || !dateMatch) continue;
 
-    const title = stripHtml(titleMatch[1]).replace(/^<!\[CDATA\[/, "").replace(/\]\]>$/, "").trim();
+    const stripCdata = (s: string) => s.replace(/<!\[CDATA\[/g, "").replace(/\]\]>/g, "").trim();
+
+    const title = stripHtml(stripCdata(titleMatch[1]));
     const link = linkMatch[1].trim();
     const pubDate = new Date(dateMatch[1].trim());
-    const rawDesc = descMatch ? descMatch[1].replace(/^<!\[CDATA\[/, "").replace(/\]\]>$/, "") : "";
+    const rawDesc = descMatch ? stripCdata(descMatch[1]) : "";
     const excerpt = stripHtml(rawDesc).slice(0, 320);
 
     if (!isNaN(pubDate.getTime())) {
