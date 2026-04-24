@@ -12,13 +12,17 @@ interface BlogPost {
 
 function stripHtml(html: string): string {
   return html
-    .replace(/<[^>]+>/g, " ")
-    .replace(/&amp;/g, "&")
+    // Decode entity-encoded angle brackets first so tag-stripping catches both forms
     .replace(/&lt;/g, "<")
     .replace(/&gt;/g, ">")
+    // Now strip all HTML tags
+    .replace(/<[^>]+>/g, " ")
+    // Decode remaining entities
+    .replace(/&amp;/g, "&")
     .replace(/&quot;/g, '"')
     .replace(/&#39;/g, "'")
     .replace(/&nbsp;/g, " ")
+    .replace(/&#\d+;/g, "")
     .replace(/\s+/g, " ")
     .trim();
 }
