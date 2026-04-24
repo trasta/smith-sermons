@@ -65,6 +65,10 @@ export async function GET() {
     <language>en-us</language>
     <description>A collection of sermons by Pastor Doyle Smith, searchable by scripture, theme, and topic.</description>
     <itunes:author>Pastor Doyle Smith</itunes:author>
+    <itunes:owner>
+      <itunes:name>Todd Smith</itunes:name>
+      <itunes:email>todd.r.smith@outlook.com</itunes:email>
+    </itunes:owner>
     <itunes:image href="${siteUrl}/podcast-artwork.jpg" />
     <itunes:category text="Religion &amp; Spirituality">
       <itunes:category text="Christianity" />
