@@ -8,6 +8,7 @@ const links = [
   { href: "/scripture", label: "Scripture"   },
   { href: "/series",    label: "Series"      },
   { href: "/search",    label: "Search"      },
+  { href: "/about",     label: "About"       },
 ];
 
 export default function Navigation() {
