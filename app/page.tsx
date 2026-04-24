@@ -2,6 +2,7 @@ import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 import SermonCard from "@/components/SermonCard";
 import SearchBar from "@/components/SearchBar";
+import DailyDevotional from "@/components/DailyDevotional";
 import type { SermonSummary } from "@/lib/types";
 
 async function getRecentSermons(): Promise<SermonSummary[]> {
@@ -51,6 +52,8 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      <DailyDevotional />
 
       {/* Recent Sermons */}
       <section className="max-w-6xl mx-auto px-4 py-16">
