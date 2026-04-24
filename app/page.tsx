@@ -61,7 +61,7 @@ export default async function HomePage() {
           </p>
           <div className="flex items-center gap-2 flex-shrink-0">
             <a
-              href="https://podcasts.apple.com/search?term=Pastor+Doyle+Smith"
+              href="https://podcasts.apple.com/us/podcast/pastor-doyle-smith-%E2%80%94-sermons/id1895418040"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-white text-stone-900 text-xs font-semibold px-3 py-1.5 rounded-lg hover:bg-stone-100 transition-colors"
@@ -69,7 +69,7 @@ export default async function HomePage() {
               Apple Podcasts
             </a>
             <a
-              href="https://open.spotify.com/search/Pastor%20Doyle%20Smith"
+              href="https://open.spotify.com/show/21ue6WJ3KPomBOYT1SXmiY"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-[#1DB954] text-white text-xs font-semibold px-3 py-1.5 rounded-lg hover:bg-[#1aa347] transition-colors"
