@@ -78,6 +78,44 @@ export default async function HomePage() {
         )}
       </section>
 
+      {/* Podcast / Subscribe strip */}
+      <section className="max-w-6xl mx-auto px-4 py-10">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-stone-50 border border-stone-200 rounded-xl px-6 py-5">
+          <div>
+            <p className="font-semibold text-stone-800">Listen in your podcast app</p>
+            <p className="text-stone-500 text-sm mt-0.5">
+              Subscribe to receive new sermons automatically in Apple Podcasts, Spotify, and more.
+            </p>
+          </div>
+          <div className="flex items-center gap-3 flex-shrink-0">
+            <a
+              href="https://podcasts.apple.com/search?term=Pastor+Doyle+Smith"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-stone-800 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-stone-700 transition-colors"
+            >
+              Apple Podcasts
+            </a>
+            <a
+              href="https://open.spotify.com/search/Pastor%20Doyle%20Smith"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-[#1DB954] text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-[#1aa347] transition-colors"
+            >
+              Spotify
+            </a>
+            <a
+              href="/feed.xml"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block border border-stone-300 text-stone-600 text-sm font-medium px-4 py-2 rounded-lg hover:bg-stone-100 transition-colors"
+            >
+              RSS Feed
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Browse by section */}
       <section className="bg-stone-100 py-16 px-4">
         <div className="max-w-6xl mx-auto">
