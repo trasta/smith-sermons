@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: {
@@ -27,6 +28,7 @@ export default function RootLayout({
       <body>
         <Navigation />
         <main className="min-h-screen">{children}</main>
+        <Analytics />
         <footer className="bg-stone-800 text-stone-300 py-10 mt-20">
           <div className="max-w-6xl mx-auto px-4 text-center">
             <p className="font-serif text-lg text-white mb-1">
