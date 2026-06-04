@@ -4,12 +4,12 @@ import type { NextRequest } from "next/server";
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
-  // Protect all /admin routes except /admin/login
-  if (pathname.startsWith("/admin") && !pathname.startsWith("/admin/login")) {
+  // Protect all /sermon-mgmt routes except /sermon-mgmt/login
+  if (pathname.startsWith("/sermon-mgmt") && !pathname.startsWith("/sermon-mgmt/login")) {
     const token = req.cookies.get("admin_token")?.value;
     if (token !== process.env.ADMIN_PASSWORD) {
       const loginUrl = req.nextUrl.clone();
-      loginUrl.pathname = "/admin/login";
+      loginUrl.pathname = "/sermon-mgmt/login";
       loginUrl.searchParams.set("redirect", pathname);
       return NextResponse.redirect(loginUrl);
     }
@@ -19,5 +19,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: ["/sermon-mgmt/:path*"],
 };

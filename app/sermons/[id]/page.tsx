@@ -61,7 +61,7 @@ export default async function SermonPage({
         <div className="flex items-center justify-between mb-1">
           <span className="text-xs font-mono text-stone-400">{sermon.sermon_id}</span>
           <Link
-            href={`/admin/sermons/${sermon.sermon_id}`}
+            href={`/sermon-mgmt/sermons/${sermon.sermon_id}`}
             className="text-xs text-stone-400 hover:text-blue-600 border border-stone-200 rounded px-2 py-1 hover:border-blue-300 transition-colors"
           >
             ✎ Edit
